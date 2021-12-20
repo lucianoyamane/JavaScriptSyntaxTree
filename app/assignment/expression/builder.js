@@ -1,6 +1,7 @@
 const { AssigmentExpressionConfig } = require("./config");
+const { Builder } = require('../../../api/builder');
 
-class AssignmentExpressionBuilder {
+class AssignmentExpressionBuilder extends Builder {
 
 
     type(value) {

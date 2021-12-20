@@ -1,6 +1,7 @@
 const { AssigmentStatementConfig } = require("./config");
+const { Builder } = require('../../../api/builder');
 
-class AssignmentStatementBuilder {
+class AssignmentStatementBuilder extends Builder{
 
 
     type(value) {

@@ -1,14 +1,14 @@
-var types = require("ast-types");
-var b = types.builders;
+const { Config } = require('../../api/config');
 
-class IdentifierConfig {
+class IdentifierConfig extends Config{
 
     constructor(builder) {
+        super();
         this._name = builder.nameBuilder;
     }
 
     syntaxTree() {
-        return b.identifier(this._name);
+        return this.ast.identifier(this._name);
     }
 
 }

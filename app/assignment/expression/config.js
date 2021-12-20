@@ -1,9 +1,9 @@
-var types = require("ast-types");
-var b = types.builders;
+const { Config } = require('../../../api/config');
 
-class AssigmentExpressionConfig {
+class AssigmentExpressionConfig extends Config{
 
     constructor(builder) {
+        super();
         this._type = builder.typeValue || "=";
         this._nameSyntaxTree = builder.nameSyntaxTree;
         this._valueSyntaxTree = builder.valueSyntaxTree;
@@ -12,7 +12,7 @@ class AssigmentExpressionConfig {
 
 
     syntaxTree() {
-        return b.assignmentExpression(this._type, this._nameSyntaxTree, this._valueSyntaxTree);
+        return this.ast.assignmentExpression(this._type, this._nameSyntaxTree, this._valueSyntaxTree);
     }
 
 }
