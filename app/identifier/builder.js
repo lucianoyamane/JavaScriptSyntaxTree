@@ -17,6 +17,6 @@ class IdentifierBuilder {
 
 }
 
-module.exports.builder = function() {
+module.exports.builder = () => {
     return new IdentifierBuilder(); 
 }
