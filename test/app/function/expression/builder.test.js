@@ -17,6 +17,7 @@ describe('assignment.statement:builder', function() {
         let testValueBuilder = builderIdentifier().name('test_value');
         let assignmentBuilder = builderAssignment().nameBuilder(testNameBuilder).valueBuilder(testValueBuilder);
         let blockBuilder = builderBlockStatement().addItem(assignmentBuilder);
+        
         let resultadoConfig = builder().name(testNameFunctionBuilder).addParam(testParamBuilder).block(blockBuilder).build();
 
 
