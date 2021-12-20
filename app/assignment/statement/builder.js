@@ -24,11 +24,11 @@ class AssignmentStatementBuilder extends Builder{
     }
 
     get nameSyntaxTree() {
-        return this._nameBuilder.build().syntaxTree();
+        return this.extractSyntaxTree(this._nameBuilder);
     }
 
     get valueSyntaxTree() {
-        return this._valueBuilder.build().syntaxTree();
+        return this.extractSyntaxTree(this._valueBuilder);
     }
 
     build() {
