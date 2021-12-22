@@ -15,7 +15,23 @@ describe('assignment.expression:builder', function() {
         let resultadoSyntaxTree = resultadoConfig.syntaxTree();
         let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('test_name = test_value')
+        expect(resultadoSyntaxTreeString).to.be.eq('test_name = test_value');
+
+    });
+
+    it('builder configurable', function(){
+        let testeNameBuilder = identifierBuilder().name('test_name');
+        let testeValueBuilder = identifierBuilder().name('test_value');
+
+        let resultadoBuilder = builder().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder);
+        testeNameBuilder.name('test_new_name');
+
+        
+        let resultadoConfig = resultadoBuilder.build();
+        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
+        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+
+        expect(resultadoSyntaxTreeString).to.be.eq('test_new_name = test_value');
 
     });
 

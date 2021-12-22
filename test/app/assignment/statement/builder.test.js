@@ -11,22 +11,22 @@ describe('assignment.statement:builder', function() {
     it('builder valid', function(){
         let testeNameBuilder = identifierBuilder().name('test_name');
         let testeValueBuilder = identifierBuilder().name('test_value');
-        let resultadoConfig = builder().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultConfig = builder().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('test_name = test_value;')
+        expect(resultSyntaxTreeString).to.be.eq('test_name = test_value;')
 
     });
 
     it('builder valid type', function(){
         let testeNameBuilder = identifierBuilder().name('test_name');
         let testeValueBuilder = identifierBuilder().name('test_value');
-        let resultadoConfig = builder().type('+=').nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultConfig = builder().type('+=').nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('test_name += test_value;')
+        expect(resultSyntaxTreeString).to.be.eq('test_name += test_value;')
 
     });
 
