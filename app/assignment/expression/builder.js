@@ -1,5 +1,5 @@
 const { AssigmentExpressionConfig } = require("./config");
-const { Builder } = require('../../../api/builder');
+const { Builder, extractSyntaxTree } = require('../../../api/builder');
 
 class AssignmentExpressionBuilder extends Builder {
 
@@ -24,11 +24,11 @@ class AssignmentExpressionBuilder extends Builder {
     }
 
     get nameSyntaxTree() {
-        return this.extractSyntaxTree(this._nameBuilder);
+        return extractSyntaxTree(this._nameBuilder);
     }
 
     get valueSyntaxTree() {
-        return this.extractSyntaxTree(this._valueBuilder);
+        return extractSyntaxTree(this._valueBuilder);
     }
 
     build() {

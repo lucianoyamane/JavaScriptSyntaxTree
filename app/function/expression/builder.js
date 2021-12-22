@@ -1,5 +1,5 @@
 const { FunctionExpressionConfig } = require("./config");
-const { Builder } = require('../../../api/builder');
+const { Builder, extractSyntaxTree, extractArraySyntaxTree } = require('../../../api/builder');
 
 class FunctionExpressionBuilder extends Builder {
 
@@ -26,15 +26,15 @@ class FunctionExpressionBuilder extends Builder {
 
 
     get nameSyntaxTree() {
-        return this.extractSyntaxTree(this._nameBuilder);
+        return extractSyntaxTree(this._nameBuilder);
     }
 
     get paramArraySyntaxTree() {
-        return this.extractArraySyntaxTree(this._paramsBuilder);
+        return extractArraySyntaxTree(this._paramsBuilder);
     }
 
     get blockSyntaxTree() {
-        return this.extractSyntaxTree(this._blockBuilder);
+        return extractSyntaxTree(this._blockBuilder);
     }
 
     build() {
