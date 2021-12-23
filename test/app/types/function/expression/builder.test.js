@@ -1,7 +1,7 @@
-const { builder } = require('../../../../app/function/expression');
-const { builder:builderIdentifier } = require('../../../../app/identifier');
-const { builder:builderAssignment } = require('../../../../app/assignment/statement');
-const { builder:builderBlockStatement } = require('../../../../app/block.statement');
+const { builder } = require('../../../../../app/types/function/expression');
+const { builder:builderIdentifier } = require('../../../../../app/types/identifier');
+const { builder:builderAssignment } = require('../../../../../app/types/assignment/statement');
+const { builder:builderBlockStatement } = require('../../../../../app/types/block.statement');
 var recast = require('recast');
 var chai = require('chai');
 var expect = chai.expect;

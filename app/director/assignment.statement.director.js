@@ -1,5 +1,5 @@
-const { builder } = require('../assignment/statement');
-const { builder:builderIdentifier } = require('../identifier');
+const { builder } = require('../types/assignment/statement');
+const { builder:builderIdentifier } = require('../types/identifier');
 const { Director } = require('./director')
 
 class AssignmentStatementDirector extends Director {

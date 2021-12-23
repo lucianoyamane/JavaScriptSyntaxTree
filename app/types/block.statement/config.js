@@ -1,4 +1,4 @@
-const { Config } = require('../../api/config');
+const { Config } = require('../../../api/config');
 
 class BlockStatementConfig extends Config{
 

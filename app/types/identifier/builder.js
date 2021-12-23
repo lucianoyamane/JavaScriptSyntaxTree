@@ -1,5 +1,5 @@
 const { IdentifierConfig } = require("./config");
-const { Builder } = require('../../api/builder');
+const { Builder } = require('../../../api/builder');
 
 class IdentifierBuilder extends Builder{
 

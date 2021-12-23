@@ -1,5 +1,5 @@
 const { BlockStatementConfig } = require("./config");
-const { Builder, extractArraySyntaxTree } = require('../../api/builder');
+const { Builder, extractArraySyntaxTree } = require('../../../api/builder');
 
 class BlockStatementBuilder extends Builder {
 

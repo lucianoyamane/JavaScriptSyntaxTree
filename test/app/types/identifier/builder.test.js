@@ -1,4 +1,4 @@
-const { builder } = require('../../../app/identifier');
+const { builder } = require('../../../../app/types/identifier');
 var recast = require('recast');
 var chai = require('chai');
 var expect = chai.expect;

@@ -1,5 +1,5 @@
 const { AssigmentExpressionConfig } = require("./config");
-const { Builder, extractSyntaxTree } = require('../../../api/builder');
+const { Builder, extractSyntaxTree } = require('../../../../api/builder');
 
 class AssignmentExpressionBuilder extends Builder {
 

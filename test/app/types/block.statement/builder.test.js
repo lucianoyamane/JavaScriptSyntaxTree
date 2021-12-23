@@ -1,6 +1,6 @@
-const { builder } = require('../../../app/block.statement');
-const { builder:builderIdentifier } = require('../../../app/identifier');
-const { builder:builderAssignment } = require('../../../app/assignment/statement');
+const { builder } = require('../../../../app/types/block.statement');
+const { builder:builderIdentifier } = require('../../../../app/types/identifier');
+const { builder:builderAssignment } = require('../../../../app/types/assignment/statement');
 var recast = require('recast');
 var chai = require('chai');
 var expect = chai.expect;
