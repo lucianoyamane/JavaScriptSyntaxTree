@@ -1,7 +1,4 @@
-const { builder } = require('../../../../../app/types/function/expression');
-const { builder:builderIdentifier } = require('../../../../../app/types/identifier');
-const { builder:builderAssignment } = require('../../../../../app/types/assignment/statement');
-const { builder:builderBlockStatement } = require('../../../../../app/types/block.statement');
+const { assignment, identifier, block, functionType } = require('../../../../../app/types');
 var recast = require('recast');
 var chai = require('chai');
 var expect = chai.expect;
@@ -11,14 +8,14 @@ describe('assignment.statement:builder', function() {
 
 
     it('builder valido', function(){
-        let testNameFunctionBuilder = builderIdentifier().name('test_name_function');
-        let testParamBuilder = builderIdentifier().name('test_param');
-        let testNameBuilder = builderIdentifier().name('test_name');
-        let testValueBuilder = builderIdentifier().name('test_value');
-        let assignmentBuilder = builderAssignment().nameBuilder(testNameBuilder).valueBuilder(testValueBuilder);
-        let blockBuilder = builderBlockStatement().addItem(assignmentBuilder);
+        let testNameFunctionBuilder = identifier().name('test_name_function');
+        let testParamBuilder = identifier().name('test_param');
+        let testNameBuilder = identifier().name('test_name');
+        let testValueBuilder = identifier().name('test_value');
+        let assignmentBuilder = assignment.statement().nameBuilder(testNameBuilder).valueBuilder(testValueBuilder);
+        let blockBuilder = block.statement().addItem(assignmentBuilder);
         
-        let resultadoConfig = builder().name(testNameFunctionBuilder).addParam(testParamBuilder).block(blockBuilder).build();
+        let resultadoConfig = functionType.expression().name(testNameFunctionBuilder).addParam(testParamBuilder).block(blockBuilder).build();
 
 
         let resultadoSyntaxTree = resultadoConfig.syntaxTree();

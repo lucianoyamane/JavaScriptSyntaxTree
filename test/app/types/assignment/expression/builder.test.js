@@ -1,5 +1,5 @@
-const { builder } = require('../../../../../app/types/assignment/expression');
-const { builder:identifierBuilder } = require('../../../../../app/types/identifier');
+const { assignment, identifier } = require('../../../../../app/types');
+
 var recast = require('recast');
 var chai = require('chai');
 var expect = chai.expect;
@@ -9,9 +9,9 @@ describe('assignment.expression:builder', function() {
 
 
     it('builder valid', function(){
-        let testeNameBuilder = identifierBuilder().name('test_name');
-        let testeValueBuilder = identifierBuilder().name('test_value');
-        let resultadoConfig = builder().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
+        let testeNameBuilder = identifier().name('test_name');
+        let testeValueBuilder = identifier().name('test_value');
+        let resultadoConfig = assignment.expression().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
         let resultadoSyntaxTree = resultadoConfig.syntaxTree();
         let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
 
@@ -20,10 +20,10 @@ describe('assignment.expression:builder', function() {
     });
 
     it('builder configurable', function(){
-        let testeNameBuilder = identifierBuilder().name('test_name');
-        let testeValueBuilder = identifierBuilder().name('test_value');
+        let testeNameBuilder = identifier().name('test_name');
+        let testeValueBuilder = identifier().name('test_value');
 
-        let resultadoBuilder = builder().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder);
+        let resultadoBuilder = assignment.expression().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder);
         testeNameBuilder.name('test_new_name');
 
         
@@ -36,9 +36,9 @@ describe('assignment.expression:builder', function() {
     });
 
     it('builder valido type', function(){
-        let testeNameBuilder = identifierBuilder().name('test_name');
-        let testeValueBuilder = identifierBuilder().name('test_value');
-        let resultadoConfig = builder().type('+=').nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
+        let testeNameBuilder = identifier().name('test_name');
+        let testeValueBuilder = identifier().name('test_value');
+        let resultadoConfig = assignment.expression().type('+=').nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
         let resultadoSyntaxTree = resultadoConfig.syntaxTree();
         let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
 

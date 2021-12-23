@@ -1,6 +1,4 @@
-const { builder } = require('../../../../app/types/block.statement');
-const { builder:builderIdentifier } = require('../../../../app/types/identifier');
-const { builder:builderAssignment } = require('../../../../app/types/assignment/statement');
+const { assignment, identifier, block } = require('../../../../app/types');
 var recast = require('recast');
 var chai = require('chai');
 var expect = chai.expect;
@@ -10,10 +8,10 @@ describe('block.statement:builder', function() {
 
 
     it('builder valido', function(){
-        let identifierOneBuilder = builderIdentifier().name('identifier_one');
-        let identifierTwoBuilder = builderIdentifier().name('identifier_two');
-        let assignmentBuilder = builderAssignment().nameBuilder(identifierOneBuilder).valueBuilder(identifierTwoBuilder);
-        let blockStatementConfig = builder().addItem(assignmentBuilder).build();
+        let identifierOneBuilder = identifier().name('identifier_one');
+        let identifierTwoBuilder = identifier().name('identifier_two');
+        let assignmentBuilder = assignment.statement().nameBuilder(identifierOneBuilder).valueBuilder(identifierTwoBuilder);
+        let blockStatementConfig = block.statement().addItem(assignmentBuilder).build();
 
 
         let resultadoSyntaxTree = blockStatementConfig.syntaxTree();
