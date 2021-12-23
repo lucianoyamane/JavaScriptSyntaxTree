@@ -1,12 +1,11 @@
-const { builder } = require('../types/assignment/statement');
-const { builder:builderIdentifier } = require('../types/identifier');
+const { assignment, identifier } = require('../types')
 const { Director } = require('./director')
 
 class AssignmentStatementDirector extends Director {
 
     constructor() {
         super();
-        this._mainBuilder = builder();
+        this._mainBuilder = assignment.statement();
     }
 
     name(value) {
@@ -23,15 +22,15 @@ class AssignmentStatementDirector extends Director {
         if (!this._name) {
             throw new Error('name null');
         }
-        return builderIdentifier().name(this._name);
+        return identifier().name(this._name);
     }
 
     __builderValue() {
-        return builderIdentifier().name(this._value || 'null');
+        return identifier().name(this._value || 'null');
     }
 
     toCode() {
-        let assignmentConfig = builder()
+        let assignmentConfig = this._mainBuilder
                                     .nameBuilder(this.__builderName())
                                     .valueBuilder(this.__builderValue())
                                     .build();
