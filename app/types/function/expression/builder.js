@@ -26,6 +26,9 @@ class FunctionExpressionBuilder extends Builder {
 
 
     get nameSyntaxTree() {
+        if (!this._nameBuilder) {
+            return null;
+        }
         return extractSyntaxTree(this._nameBuilder);
     }
 

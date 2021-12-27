@@ -1,11 +1,10 @@
-const { assignment, identifier } = require('../types')
+const { assignment, identifier } = require('../types');
 const { Director } = require('./director')
 
 class AssignmentStatementDirector extends Director {
 
     constructor() {
-        super();
-        this._mainBuilder = assignment.statement();
+        super(assignment.statement());
     }
 
     name(value) {
@@ -30,7 +29,7 @@ class AssignmentStatementDirector extends Director {
     }
 
     toCode() {
-        let assignmentConfig = this._mainBuilder
+        let assignmentConfig = this.mainBuilder
                                     .nameBuilder(this.__builderName())
                                     .valueBuilder(this.__builderValue())
                                     .build();

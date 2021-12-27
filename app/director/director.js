@@ -2,6 +2,14 @@ var recast = require('recast');
 
 class Director {
 
+    constructor(builder) {
+        this._mainBuilder = builder;
+    }
+
+    get mainBuilder() {
+        return this._mainBuilder;
+    }
+
     toCode(){}
 
     toString(){

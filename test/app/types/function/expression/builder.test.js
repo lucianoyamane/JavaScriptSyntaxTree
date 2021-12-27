@@ -6,8 +6,22 @@ var expect = chai.expect;
 
 describe('assignment.statement:builder', function() {
 
+    it('basic test', function(){
+        let blockBuilder = block.statement()
+        let resultadoConfig = functionType.expression().block(blockBuilder).build();
+        
 
-    it('builder valido', function(){
+        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
+        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+
+        let expected = 'function() {}';
+
+        expect(resultadoSyntaxTreeString).to.be.eq(expected)
+
+    });
+    
+    
+    it('complete test', function(){
         let testNameFunctionBuilder = identifier().name('test_name_function');
         let testParamBuilder = identifier().name('test_param');
         let testNameBuilder = identifier().name('test_name');
