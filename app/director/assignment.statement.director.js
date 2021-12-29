@@ -3,8 +3,8 @@ const { Director } = require('./director')
 
 class AssignmentStatementDirector extends Director {
 
-    constructor() {
-        super(assignment.statement());
+    constructor(higherBuilder) {
+        super(assignment.statement(), higherBuilder);
     }
 
     name(value) {
@@ -28,14 +28,12 @@ class AssignmentStatementDirector extends Director {
         return identifier().name(this._value || 'null');
     }
 
-    toCode() {
-        let assignmentConfig = this.mainBuilder
-                                    .nameBuilder(this.__builderName())
-                                    .valueBuilder(this.__builderValue())
-                                    .build();
-        return assignmentConfig.syntaxTree();
+    configBuilder() {
+        this.mainBuilder
+                .nameBuilder(this.__builderName())
+                .valueBuilder(this.__builderValue());
     }
 
 }
 
-module.exports.director = () => { return new AssignmentStatementDirector() }
+module.exports.director = (higherBuilder) => { return new AssignmentStatementDirector(higherBuilder) }

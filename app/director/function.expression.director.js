@@ -1,11 +1,17 @@
 const { functionType, identifier, block } = require('../types');
-const { Director } = require('./director')
+const { Director } = require('./director');
+const { director: blockDirector } = require('./block.director');
 
 class FunctionExpressionDirector extends Director {
 
-    constructor() {
-        super(functionType.expression());
+    constructor(higherBuilder) {
+        super(functionType.expression(),higherBuilder);
         this._paramsBuilder = [];
+        this.__initBlock();
+    }
+
+    __initBlock() {
+        this._blockDirector = blockDirector(this);
     }
 
     name(value) {
@@ -18,17 +24,22 @@ class FunctionExpressionDirector extends Director {
         return this;
     }
 
-    toCode() {
+    block(blockParam) {
+        if (blockParam) {
+            this._blockDirector = blockParam;
+            return this;
+        }
+        return this._blockDirector;
+    }
+
+    configBuilder() {
         if (this._nameBuilder) {
             this.mainBuilder.name(this._nameBuilder);
         }
         this._paramsBuilder.forEach(builder => this.mainBuilder.addParam(builder));
-        this.mainBuilder.block(block.statement());
-        let functionConfig = this.mainBuilder.build();
-
-        return functionConfig.syntaxTree();
+        this.mainBuilder.block(this._blockDirector.toBuilder());
     }
 
 }
 
-module.exports.director = () => { return new FunctionExpressionDirector() }
+module.exports.director = (higherBuilder) => { return new FunctionExpressionDirector(higherBuilder) }
