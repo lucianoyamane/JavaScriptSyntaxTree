@@ -2,13 +2,18 @@ var recast = require('recast');
 
 class Director {
 
-    constructor(builder, higherBuilder) {
+    constructor(key, builder, higherBuilder) {
+        this._key = key;
         this._mainBuilder = builder;
         this._higherBuilder = higherBuilder;
     }
 
     get mainBuilder() {
         return this._mainBuilder;
+    }
+
+    get key() {
+        return this._key;
     }
 
     configBuilder() {

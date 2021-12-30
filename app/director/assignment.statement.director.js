@@ -4,7 +4,7 @@ const { Director } = require('./director')
 class AssignmentStatementDirector extends Director {
 
     constructor(higherBuilder) {
-        super(assignment.statement(), higherBuilder);
+        super('assignment.statement', assignment.statement(), higherBuilder);
     }
 
     name(value) {

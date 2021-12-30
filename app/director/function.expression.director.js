@@ -5,7 +5,7 @@ const { director: blockDirector } = require('./block.director');
 class FunctionExpressionDirector extends Director {
 
     constructor(higherBuilder) {
-        super(functionType.expression(),higherBuilder);
+        super('function_expression', functionType.expression(),higherBuilder);
         this._paramsBuilder = [];
         this.__initBlock();
     }

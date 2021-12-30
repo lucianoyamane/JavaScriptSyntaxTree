@@ -5,13 +5,22 @@ const { director: assignmentDirector } = require('./assignment.statement.directo
 class BlockDirector extends Director {
 
     constructor(higherBuilder) {
-        super(block.statement(),higherBuilder);
+        super('block', block.statement(), higherBuilder);
         this._directors = [];
+        this._statementsKey = ['assignment.statement', 'block'];
+    }
+
+    __validate(key) {
+        return this._statementsKey.includes(key);
     }
 
     add(director) {
-        this._directors.push(director);
-        return this;
+        if (this.__validate(director.key)) {
+            this._directors.push(director);
+            return this;
+        }
+        throw new Error('invalid.director');
+        
     }
 
     assignment() {
