@@ -11,11 +11,11 @@ describe('assignment.expression:builder', function() {
     it('builder valid', function(){
         let testeNameBuilder = identifier().name('test_name');
         let testeValueBuilder = identifier().name('test_value');
-        let resultadoConfig = assignment.expression().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultConfig = assignment.expression().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('test_name = test_value');
+        expect(resultSyntaxTreeString).to.be.eq('test_name = test_value');
 
     });
 
@@ -23,26 +23,26 @@ describe('assignment.expression:builder', function() {
         let testeNameBuilder = identifier().name('test_name');
         let testeValueBuilder = identifier().name('test_value');
 
-        let resultadoBuilder = assignment.expression().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder);
+        let resultBuilder = assignment.expression().nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder);
         testeNameBuilder.name('test_new_name');
 
         
-        let resultadoConfig = resultadoBuilder.build();
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultConfig = resultBuilder.build();
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('test_new_name = test_value');
+        expect(resultSyntaxTreeString).to.be.eq('test_new_name = test_value');
 
     });
 
     it('builder valido type', function(){
         let testeNameBuilder = identifier().name('test_name');
         let testeValueBuilder = identifier().name('test_value');
-        let resultadoConfig = assignment.expression().type('+=').nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultConfig = assignment.expression().type('+=').nameBuilder(testeNameBuilder).valueBuilder(testeValueBuilder).build();
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('test_name += test_value')
+        expect(resultSyntaxTreeString).to.be.eq('test_name += test_value')
 
     });
 

@@ -14,14 +14,14 @@ describe('block.statement:builder', function() {
         let blockStatementConfig = block.statement().addItem(assignmentBuilder).build();
 
 
-        let resultadoSyntaxTree = blockStatementConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultSyntaxTree = blockStatementConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
         let expected = '{\n' +
                         '    identifier_one = identifier_two;\n' +
                         '}';
 
-        expect(resultadoSyntaxTreeString).to.be.eq(expected)
+        expect(resultSyntaxTreeString).to.be.eq(expected)
 
     });
 

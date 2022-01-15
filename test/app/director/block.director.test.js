@@ -1,4 +1,4 @@
-const { block, assignment, function_expression } = require('../../../app/director');
+const { block, assignment } = require('../../../app/director');
 
 
 var chai = require('chai');
@@ -31,7 +31,7 @@ describe('block:director', function() {
 
     it('error test', function(){
 
-        expect(function() {block().add(function_expression())}).to.throw('invalid.director');
+        expect(function() {block().add({key: 'invalid'})}).to.throw('invalid.director');
     })
 
 })

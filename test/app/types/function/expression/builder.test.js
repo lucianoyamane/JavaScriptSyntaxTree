@@ -8,15 +8,15 @@ describe('assignment.statement:builder', function() {
 
     it('basic test', function(){
         let blockBuilder = block.statement()
-        let resultadoConfig = functionType.expression().block(blockBuilder).build();
+        let resultConfig = functionType.expression().block(blockBuilder).build();
         
 
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
         let expected = 'function() {}';
 
-        expect(resultadoSyntaxTreeString).to.be.eq(expected)
+        expect(resultSyntaxTreeString).to.be.eq(expected)
 
     });
     
@@ -29,17 +29,17 @@ describe('assignment.statement:builder', function() {
         let assignmentBuilder = assignment.statement().nameBuilder(testNameBuilder).valueBuilder(testValueBuilder);
         let blockBuilder = block.statement().addItem(assignmentBuilder);
         
-        let resultadoConfig = functionType.expression().name(testNameFunctionBuilder).addParam(testParamBuilder).block(blockBuilder).build();
+        let resultConfig = functionType.expression().name(testNameFunctionBuilder).addParam(testParamBuilder).block(blockBuilder).build();
 
 
-        let resultadoSyntaxTree = resultadoConfig.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultSyntaxTree = resultConfig.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
         let expected = 'function test_name_function(test_param) {\n' +
                         '    test_name = test_value;\n' +
                         '}';
 
-        expect(resultadoSyntaxTreeString).to.be.eq(expected)
+        expect(resultSyntaxTreeString).to.be.eq(expected)
 
     });
 

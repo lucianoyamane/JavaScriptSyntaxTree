@@ -9,10 +9,10 @@ describe('identifier:builder', function() {
 
     it('builder valido', function(){
         let configTeste = identifier().name('teste').build();
-        let resultadoSyntaxTree = configTeste.syntaxTree();
-        let resultadoSyntaxTreeString = recast.print(resultadoSyntaxTree).code;
+        let resultSyntaxTree = configTeste.syntaxTree();
+        let resultSyntaxTreeString = recast.print(resultSyntaxTree).code;
 
-        expect(resultadoSyntaxTreeString).to.be.eq('teste')
+        expect(resultSyntaxTreeString).to.be.eq('teste')
 
     });
 

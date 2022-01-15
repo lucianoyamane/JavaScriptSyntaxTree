@@ -1,4 +1,4 @@
-const { functionType, identifier, block } = require('../types');
+const { functionType, identifier } = require('../types');
 const { Director } = require('./director');
 const { director: blockDirector } = require('./block.director');
 
